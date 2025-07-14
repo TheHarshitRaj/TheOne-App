@@ -82,36 +82,7 @@
                         MDList:
                             id: tasks_list
                         Widget:
-            MDSeparator:
-                height: "1dp"
-            MDCard:
-                orientation: 'vertical'
-                elevation: 0.1
-                size_hint_x: 0.9
-                pos_hint: {'center_x':0.5}
-                padding: [10,10,10,10]
-                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
-                BoxLayout:
-                    orientation: 'horizontal'
-                    size_hint_y: None
-                    height: self.minimum_height
-                    BoxLayout:
-                        orientation: 'vertical'
-                        spacing: 10
-                        MDLabel:
-                            text: 'Goals'
-                            font_style: 'H6'
-                            pos_hint: {'center_y':0.5}
-                            size_hint_y: None
-                            height: self.texture_size[1]
-                        MDSeparator:
-                            height: "1dp"
-                    MDIconButton:
-                        icon: 'plus'
-                        md_bg_color: app.theme_cls.primary_dark
-                        pos_hint: {'center_y':0.5}
-
-
+            Widget:
 
 <ExtrasScreen>:
     name: 'extras'
