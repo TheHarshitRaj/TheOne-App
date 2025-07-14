@@ -1,0 +1,574 @@
+<WindowManager>:
+    HomeScreen:
+    ProductivityScreen:
+    ExtrasScreen:
+    SettingsScreen:
+    QuickNoteScreen:
+    RandomNumScreen:
+    ShortenUrlScreen:
+    TossCoinScreen:
+    YTVideoDownloadScreen:
+
+<HomeScreen>:
+    name: 'home'
+    BoxLayout:
+        orientation:'vertical'
+        padding:20
+        MDLabel:
+            text:'Welcome, User!'
+            halign:'left'
+            font_style:'H4'
+            height: self.texture_size[1]
+        Widget:
+            size_hint: (None,0.1)
+        MDCard:
+            size_hint: None, None
+            size: (root.width * 0.8), self.minimum_height
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            elevation: 2
+            padding: [20,15,20,15]
+            spacing: "20dp"
+            md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+            orientation:'vertical'
+            MDIcon:
+                icon: 'format-quote-open'
+            MDLabel:
+                text: app.quotes()
+                size_hint_y: None
+                height: self.texture_size[1]
+        Widget:
+
+<ProductivityScreen>:
+    name: 'productivity-screen'
+    ScrollView:
+        bar_width: "8dp"
+        BoxLayout:
+            id: tasks_section
+            orientation: 'vertical'
+            padding: 10
+            spacing: 20
+            MDCard:
+                orientation: 'vertical'
+                elevation: 0.1
+                size_hint_x: 0.9
+                pos_hint: {'center_x':0.5}
+                padding: [10,10,10,10]
+                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        MDLabel:
+                            text: "Today's Tasks"
+                            font_style: 'H6'
+                            pos_hint: {'center_y':0.5}
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                        MDSeparator:
+                            height: "1dp"
+                    MDIconButton:
+                        icon: 'plus'
+                        md_bg_color: app.theme_cls.primary_dark
+                        pos_hint: {'center_y':0.5}
+                        on_release: root.createTask()
+                ScrollView:
+                    bar_width: "2dp"
+                    MDBoxLayout:
+                        orientation: 'vertical'
+                        adaptive_height: True
+                        MDList:
+                            id: tasks_list
+                        Widget:
+            MDSeparator:
+                height: "1dp"
+            MDCard:
+                orientation: 'vertical'
+                elevation: 0.1
+                size_hint_x: 0.9
+                pos_hint: {'center_x':0.5}
+                padding: [10,10,10,10]
+                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    BoxLayout:
+                        orientation: 'vertical'
+                        spacing: 10
+                        MDLabel:
+                            text: 'Goals'
+                            font_style: 'H6'
+                            pos_hint: {'center_y':0.5}
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                        MDSeparator:
+                            height: "1dp"
+                    MDIconButton:
+                        icon: 'plus'
+                        md_bg_color: app.theme_cls.primary_dark
+                        pos_hint: {'center_y':0.5}
+
+
+
+<ExtrasScreen>:
+    name: 'extras'
+    BoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: 'Everything at your\nFingertips.'
+            halign: 'center'
+            font_style: 'H5'
+            size_hint_y: None
+            height: self.texture_size[1] + dp(50)
+        ScrollView:
+            bar_width: "2dp"
+            GridLayout:
+                cols: 2
+                padding: [10,0,10,10]
+                spacing: 15
+                size_hint_y: None
+                height: self.minimum_height
+
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    on_press: app.root.ids.screen_manager.current = 'quick-note-screen'
+                    ripple_behavior: True
+                    ripple_scale: 1.2
+                    MDIcon:
+                        icon: 'pencil'
+                        pos_hint: {'center_x': 0.5}
+                    MDLabel:
+                        text: "Quick Note"
+                        halign: "center"
+                        font_style: "H6"
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    on_release: app.root.ids.screen_manager.current = 'shorten-url'
+                    ripple_behavior: True
+                    ripple_scale: 1.2
+                    MDIcon:
+                        icon: 'link'
+                        pos_hint: {'center_x': 0.5}
+                    MDLabel:
+                        text: "URL Shortener"
+                        halign: "center"
+                        font_style: "H6"
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    on_release: app.root.ids.screen_manager.current = 'yt-download-screen'
+                    ripple_behavior: True
+                    ripple_scale: 1.2
+                    MDIcon:
+                        icon: 'youtube'
+                        pos_hint: {'center_x': 0.5}
+                    MDLabel:
+                        text: "YT Video Download"
+                        halign: "center"
+                        font_style: "H6"
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    on_release: app.root.ids.screen_manager.current = 'random-num-screen'
+                    ripple_behavior: True
+                    ripple_scale: 1.2
+                    MDIcon:
+                        icon: 'numeric'
+                        pos_hint: {'center_x': 0.5}
+                    MDLabel:
+                        text: "Random Number"
+                        halign: "center"
+                        font_style: "H6"
+                MDCard:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: "150dp"
+                    padding: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    on_release: app.root.ids.screen_manager.current = 'toss-coin'
+                    ripple_behavior: True
+                    ripple_scale: 1.2
+                    MDIcon:
+                        icon: 'hand-coin'
+                        pos_hint: {'center_x': 0.5}
+                    MDLabel:
+                        text: "Toss a coin"
+                        halign: "center"
+                        font_style: "H6"
+                MDLabel:
+                    text: 'More coming soon..'
+                    halign: 'center'
+
+
+<SettingsScreen>:
+    name: 'settings'
+    ScrollView:
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: 15
+            spacing: 10
+            adaptive_height: True
+            size_hint_y: None
+
+            MDCard:
+                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                orientation: 'vertical'
+                padding: "10dp"
+                radius: [12, 12, 12, 12]
+                elevation: 2
+                adaptive_height: True
+                size_hint_y: None
+
+                MDBoxLayout:
+                    id: panel_container
+                    orientation: 'vertical'
+                    adaptive_height: True
+                    spacing: "10dp"
+
+<GeneralSettings>:
+    orientation: "vertical"
+    adaptive_height: True
+    padding: "10dp"
+    spacing: "10dp"
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        adaptive_height: True
+        padding: [0,10,0,0]
+        MDBoxLayout:
+            adaptive_height: True
+            orientation:'vertical'
+            BoxLayout:
+                orientation: 'horizontal'
+                adaptive_height: True
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDLabel:
+                        text: "Theme"
+                        halign: "left"
+                        valign: "middle"
+                        size_hint_x: 1
+                        max_lines: 1
+                        shorten: True
+                        shorten_from: 'right'
+                        pos_hint: {"center_y": 0.5}
+                        font_style: 'H6'
+                    MDLabel:
+                        text: 'Change your theme preference'
+                        font_style: 'Body2'
+                MDDropDownItem:
+                    id: theme_dropdown
+                    text: app.theme_cls.theme_style
+                    pos_hint: {"center_x": 0.5}
+                    on_release: root.menu.open()
+
+<About>:
+    orientation: "vertical"
+    adaptive_height: True
+    padding: "10dp"
+    spacing: "10dp"
+
+    MDCard:
+        orientation: "vertical"
+        ripple_behavior: True
+        on_release: root.openRepo()
+        padding: [0,15,15,0]
+        radius: [12, 12, 12, 12]
+        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+        size_hint_y: None
+        height: self.minimum_height
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height: True
+            spacing: "10dp"
+            MDBoxLayout:
+                adaptive_height: True
+                orientation:'vertical'
+                BoxLayout:
+                    orientation: 'vertical'
+                    adaptive_height: True
+                    spacing: 10
+                    MDLabel:
+                        text: "TheOne App"
+                        halign: "left"
+                        valign: "middle"
+                        size_hint_x: 1
+                        max_lines: 1
+                        shorten: True
+                        shorten_from: 'right'
+                        pos_hint: {"center_y": 0.5}
+                        font_style: 'H6'
+                    MDLabel:
+                        text: 'By Harshit Raj'
+                        font_style: 'Body2'
+                BoxLayout:
+                    orientation: 'horizontal'
+                    padding: [5,0,5,0]
+                    spacing: 5
+                    MDIcon:
+                        icon: 'copyright'
+                        pos_hint: {'center_x':0.5,'center_y':0.5}
+                    MDLabel:
+                        text: '2025'
+                        halign: 'left'
+                        font_style: 'Subtitle2'
+                    Widget:
+
+<QuickNoteScreen>:
+    name: 'quick-note-screen'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.1
+            spacing: 10
+            MDCard:
+                radius: [10]
+                padding: [0,0,5,0]
+                on_release: root.saveContent()
+                ripple_behavior: True
+                MDLabel:
+                    text: 'Save'
+                    halign: 'center'
+                MDIcon:
+                    icon: 'content-save'
+                    pos_hint: {'center_y': 0.5}
+            MDCard:
+                radius: [10]
+                padding: [0,0,5,0]
+                on_release: root.cleartext()
+                ripple_behavior: True
+                MDLabel:
+                    text: 'Clear'
+                    halign: 'center'
+                MDIcon:
+                    icon: 'delete'
+                    pos_hint: {'center_y': 0.5}
+            MDCard:
+                radius: [10]
+                padding: [0,0,5,0]
+                on_release: root.copyText()
+                ripple_behavior: True
+                MDLabel:
+                    text: 'Copy'
+                    halign: 'center'
+                MDIcon:
+                    icon: 'content-copy'
+                    pos_hint: {'center_y': 0.5}
+
+        MDTextField:
+            id: quick_note_field
+            size_hint: (1,1)
+            mode: "rectangle"
+            size_hint_x: 1
+            multiline: True
+            text_color_focus: '#FFFFFF' if app.theme_cls.theme_style=='Dark' else '#000000'    # When focused (typing)
+            text_color_normal: '#B3B3B3'if app.theme_cls.theme_style=='Dark' else '#3B3B3B'    # When not focused
+
+
+<RandomNumScreen>:
+    name:'random-num-screen'
+    BoxLayout:
+        orientation:'vertical'
+        padding:[15,20,15,0]
+        MDLabel:
+            text:'Enter the range for generation'
+            halign:'center'
+            font_style:'H6'
+            size_hint_y:None
+            height: self.texture_size[1] + dp(20)
+        BoxLayout:
+            orientation:'vertical'
+            spacing:20
+            BoxLayout:
+                orientation:'horizontal'
+                spacing:25
+                # pos_hint:{'center_x':0.5,'center_y':0.7}
+                MDTextField:
+                    id: rangeStart
+                    hint_text:'From'
+                    input_filter: 'int'
+                    keyboard_type: 'number'
+                MDTextField:
+                    id: rangeEnd
+                    hint_text:'To'
+                    input_filter: 'int'
+                    keyboard_type: 'number'
+            MDRectangleFlatButton:
+                text:'Generate'
+                on_press: root.RandomNumGen(rangeStart.text, rangeEnd.text)
+                pos_hint:{'center_x':0.5}
+                ripple_scale: 1.5
+
+            MDCard:
+                size_hint: (1, None)
+                height: dp(150)
+                elevation: 1
+                padding: "15dp"
+                md_bg_color: '#323031'
+                MDLabel:
+                    text: 'Your Random Number'
+                    halign:'center'
+                    font_style:'H6'
+                MDIcon:
+                    icon: 'arrow-right'
+                    pos_hint: {'center_y':0.5}
+                MDLabel:
+                    text: str(root.randomNum)
+                    halign:'center'
+                    font_style:'H4'
+            Widget:
+                size_hint: (1,0.5)
+
+
+<ShortenUrlScreen>:
+    name: 'shorten-url'
+    BoxLayout:
+        orientation:'vertical'
+        padding: 20
+        MDTextField:
+            id: long_url
+            hint_text: 'Enter the url'
+            size_hint_x: (0.8)
+            pos_hint: {'center_x':0.5}
+            mode: 'rectangle'
+        Widget:
+            size_hint_y: 0.2
+        MDRectangleFlatButton:
+            text: 'Shorten'
+            pos_hint: {'center_x':0.5}
+            on_press: root.shorten_url(long_url.text)
+            ripple_scale: 1.5
+        Widget:
+        MDCard:
+            size_hint: (1,None)
+            height: dp(150)
+            elevation:1
+            padding:[15,0,15,0]
+            orientation:'vertical'
+            MDLabel:
+                text: 'Shortened URL'
+                halign: 'center'
+                font_style: 'H6'
+            MDTextField:
+                id: url_label
+                text: root.short_url
+                readonly: True
+                pos_hint: {'center_x':0.5}
+                size_hint_x: 0.8
+            Widget:
+                size_hint: (None,0.1)
+        Widget:
+
+<TossCoinScreen>:
+    name: 'toss-coin'
+    BoxLayout:
+        orientation:'vertical'
+        Widget:
+        MDLabel:
+            text: root.coin
+            halign:'center'
+            font_style:'H5'
+        MDRectangleFlatButton:
+            text: 'Toss'
+            font_style: 'Button'
+            ripple_scale: 1.5
+            on_press: root.coinToss()
+            pos_hint:{'center_x':0.5,'center_y':0.4}
+        Widget:
+
+<YTVideoDownloadScreen>:
+    name: 'yt-download-screen'
+    MDLabel:
+        text: 'Coming Soon...'
+        halign: 'center'
+        font_style: 'H6'
+
+Screen:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: 'TheOne'
+            anchor_title: 'left'
+            left_action_items: [['menu', lambda _: nav_draw.set_state('toggle')]]
+            elevation: 1
+
+        WindowManager:
+            id: screen_manager
+
+    MDNavigationDrawer:
+        id:nav_draw
+        width: min(dp(300), root.width * 0.85)
+        ScrollView:
+            BoxLayout:
+                orientation:'vertical'
+                padding:[5,0,5,0]
+                MDLabel:
+                    text: 'Welcome User'
+                    font_style: 'H3'
+                MDList:
+                    OneLineIconListItem:
+                        text: 'Home'
+                        _no_ripple_effect: True
+                        on_press:
+                            nav_draw.set_state('close')
+                            root.ids.screen_manager.current = 'home'
+                        IconLeftWidget:
+                            icon: 'home'
+                            on_press:
+                                nav_draw.set_state('close')
+                                root.ids.screen_manager.current = 'home'
+                    OneLineIconListItem:
+                        text: 'Productivity'
+                        _no_ripple_effect: True
+                        on_press:
+                            nav_draw.set_state('close')
+                            root.ids.screen_manager.current = 'productivity-screen'
+                        IconLeftWidget:
+                            icon: 'clock'
+                            on_press:
+                                nav_draw.set_state('close')
+                                root.ids.screen_manager.current = 'productivity-screen'
+                    OneLineIconListItem:
+                        text: 'Extras'
+                        _no_ripple_effect: True
+                        on_press:
+                            nav_draw.set_state('close')
+                            root.ids.screen_manager.current = 'extras'
+                        IconLeftWidget:
+                            icon: 'puzzle'
+                            on_press:
+                                nav_draw.set_state('close')
+                                root.ids.screen_manager.current = 'extras'
+                    OneLineIconListItem:
+                        text: 'Settings'
+                        _no_ripple_effect: True
+                        on_press:
+                            nav_draw.set_state('close')
+                            root.ids.screen_manager.current = 'settings'
+                        IconLeftWidget:
+                            icon: 'cog'
+                            on_press:
+                                nav_draw.set_state('close')
+                                root.ids.screen_manager.current = 'settings'
+                Widget:
