@@ -11,32 +11,125 @@
 
 <HomeScreen>:
     name: 'home'
-    BoxLayout:
-        orientation:'vertical'
-        padding:20
-        MDLabel:
-            text:'Welcome, User!'
-            halign:'left'
-            font_style:'H4'
-            height: self.texture_size[1]
-        Widget:
-            size_hint: (None,0.1)
-        MDCard:
-            size_hint: None, None
-            size: (root.width * 0.8), self.minimum_height
-            pos_hint: {"center_x": 0.5, "center_y": 0.5}
-            elevation: 2
-            padding: [20,15,20,15]
-            spacing: "20dp"
-            md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+    ScrollView:
+        MDBoxLayout:
             orientation:'vertical'
-            MDIcon:
-                icon: 'format-quote-open'
-            MDLabel:
-                text: app.quotes()
+            padding:20
+            spacing: 20
+            size_hint_y: None
+            adaptive_height: True
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 20
                 size_hint_y: None
-                height: self.texture_size[1]
-        Widget:
+                height: self.minimum_height
+                Widget:
+                    size_hint_y: 0.1
+                MDLabel:
+                    text:'Welcome, User!'
+                    halign:'left'
+                    font_style:'H4'
+                    height: self.texture_size[1]
+                Widget:
+                    size_hint_y: None
+                    height: dp(20)
+                MDCard:
+                    size_hint: None, None
+                    size: (root.width * 0.8), self.minimum_height
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                    elevation: 2
+                    padding: [20,15,20,15]
+                    spacing: "20dp"
+                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    orientation:'vertical'
+                    MDIcon:
+                        icon: 'format-quote-open'
+                    MDLabel:
+                        text: app.quotes()
+                        size_hint_y: None
+                        height: self.texture_size[1]
+            MDSeparator:
+                height: "1dp"
+                color: 0,0,0,0.4
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: 15
+                size_hint_y: None
+                height: self.minimum_height
+                MDLabel:
+                    text: 'Quick Access'
+                    font_style: 'H5'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                GridLayout:
+                    cols: 3
+                    spacing: 10
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDCard:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        elevation: 1
+                        padding: [10,15,10,15]
+                        spacing: "10dp"
+                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        orientation:'vertical'
+                        on_release: app.root.ids.screen_manager.current = 'quick-note-screen'
+                        ripple_behavior: True
+                        ripple_scale: 1.2
+                        MDIcon:
+                            icon: 'pencil'
+                            pos_hint: {'center_x': 0.5}
+                        MDLabel:
+                            text: 'Quick\nNote'
+                            halign: 'center'
+                            font_style: 'Body2'
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                    MDCard:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        elevation: 1
+                        padding: [10,15,10,15]
+                        spacing: "10dp"
+                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        orientation:'vertical'
+                        on_release: app.root.ids.screen_manager.current = 'shorten-url'
+                        ripple_behavior: True
+                        ripple_scale: 1.2
+                        MDIcon:
+                            icon: 'link'
+                            pos_hint: {'center_x': 0.5}
+                        MDLabel:
+                            text: 'Shorten\nURL'
+                            halign: 'center'
+                            font_style: 'Body2'
+                            size_hint_y: None
+                            height: self.texture_size[1]
+                    MDCard:
+                        size_hint_y: None
+                        height: self.minimum_height
+                        elevation: 1
+                        padding: [10,15,10,15]
+                        spacing: "10dp"
+                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        orientation:'vertical'
+                        on_release: app.root.ids.screen_manager.current = 'random-num-screen'
+                        ripple_behavior: True
+                        ripple_scale: 1.2
+                        MDIcon:
+                            icon: 'numeric'
+                            pos_hint: {'center_x': 0.5}
+                        MDLabel:
+                            text: 'Random\nNumber'
+                            halign: 'center'
+                            font_style: 'Body2'
+                            size_hint_y: None
+                            height: self.texture_size[1]
+            MDSeparator:
+                height: "1dp"
+                color: 0,0,0,0.4
+                        
 
 <ProductivityScreen>:
     name: 'productivity-screen'
@@ -45,12 +138,13 @@
         BoxLayout:
             id: tasks_section
             orientation: 'vertical'
-            padding: 10
+            padding: 15
             spacing: 20
+            height: self.minimum_height
             MDCard:
                 orientation: 'vertical'
                 elevation: 0.1
-                size_hint_x: 0.9
+                size_hint_x: 1
                 pos_hint: {'center_x':0.5}
                 padding: [10,10,10,10]
                 md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
@@ -82,8 +176,7 @@
                         MDList:
                             id: tasks_list
                         Widget:
-            Widget:
-
+            
 <ExtrasScreen>:
     name: 'extras'
     BoxLayout:
@@ -249,6 +342,7 @@
                     text: app.theme_cls.theme_style
                     pos_hint: {"center_x": 0.5}
                     on_release: root.menu.open()
+                    
 
 <About>:
     orientation: "vertical"
@@ -278,7 +372,7 @@
                     adaptive_height: True
                     spacing: 10
                     MDLabel:
-                        text: "TheOne App"
+                        text: "TheOne"
                         halign: "left"
                         valign: "middle"
                         size_hint_x: 1
@@ -353,8 +447,10 @@
             mode: "rectangle"
             size_hint_x: 1
             multiline: True
-            text_color_focus: '#FFFFFF' if app.theme_cls.theme_style=='Dark' else '#000000'    # When focused (typing)
-            text_color_normal: '#B3B3B3'if app.theme_cls.theme_style=='Dark' else '#3B3B3B'    # When not focused
+            text_color_focus: '#000000'    # When focused (typing)
+            text_color_normal: '#ffffff'    # When not focused
+            line_color_focus: '#000000'  # Black border when focused
+            line_color_normal: '#000000' # Black border when not focused
 
 
 <RandomNumScreen>:
@@ -375,18 +471,19 @@
                 orientation:'horizontal'
                 spacing:25
                 # pos_hint:{'center_x':0.5,'center_y':0.7}
-                MDTextField:
+                ColoredTextField:
                     id: rangeStart
                     hint_text:'From'
                     input_filter: 'int'
                     keyboard_type: 'number'
-                MDTextField:
+                ColoredTextField:
                     id: rangeEnd
                     hint_text:'To'
                     input_filter: 'int'
                     keyboard_type: 'number'
-            MDRectangleFlatButton:
+            MDRaisedButton:
                 text:'Generate'
+                font_style: 'Button'
                 on_press: root.RandomNumGen(rangeStart.text, rangeEnd.text)
                 pos_hint:{'center_x':0.5}
                 ripple_scale: 1.5
@@ -417,15 +514,18 @@
     BoxLayout:
         orientation:'vertical'
         padding: 20
-        MDTextField:
+        ColoredTextField:
             id: long_url
-            hint_text: 'Enter the url'
+            hint_text: 'Enter the url:'
             size_hint_x: (0.8)
             pos_hint: {'center_x':0.5}
-            mode: 'rectangle'
+            mode: 'fill'
+            fill_color_normal: 0, 0, 0, 0.4
+            fill_color_focus: 0, 0, 0, 0.6
+            text_color_focus: 1, 1, 1, 1
         Widget:
             size_hint_y: 0.2
-        MDRectangleFlatButton:
+        MDRaisedButton:
             text: 'Shorten'
             pos_hint: {'center_x':0.5}
             on_press: root.shorten_url(long_url.text)
@@ -459,8 +559,8 @@
         MDLabel:
             text: root.coin
             halign:'center'
-            font_style:'H5'
-        MDRectangleFlatButton:
+            font_style:'H4'
+        MDRaisedButton:
             text: 'Toss'
             font_style: 'Button'
             ripple_scale: 1.5
@@ -475,14 +575,35 @@
         halign: 'center'
         font_style: 'H6'
 
+<ColoredTextField@MDTextField>:
+    text_color_focus: 1, 1, 1, 1
+    hint_text_color_focus: 1, 1, 1, 0.7
+    hint_text_color_normal: 1, 1, 1, 0.5
+    line_color_focus: 1, 1, 1, 1
+    fill_color_normal: 1, 1, 1, 0.1
+    fill_color_focus: 1, 1, 1, 0.15
+
 Screen:
+    Image:
+        source: "assets/bg.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        size_hint: 1, 1
+        pos_hint: {"x":0, "y":0}
     BoxLayout:
         orientation: 'vertical'
         MDTopAppBar:
             title: 'TheOne'
             anchor_title: 'left'
             left_action_items: [['menu', lambda _: nav_draw.set_state('toggle')]]
-            elevation: 1
+            elevation: 0
+
+            canvas.after:
+                Color:
+                    rgba: 1, 1, 1, 0.2  # white with transparency (adjust as needed)
+                Line:
+                    width: 1
+                    points: self.x, self.y, self.right, self.y  # bottom border
 
         WindowManager:
             id: screen_manager
