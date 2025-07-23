@@ -12,6 +12,7 @@
 <HomeScreen>:
     name: 'home'
     ScrollView:
+        bar_width: "0dp"
         MDBoxLayout:
             orientation:'vertical'
             padding:20
@@ -40,12 +41,12 @@
                     elevation: 2
                     padding: [20,15,20,15]
                     spacing: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     orientation:'vertical'
                     MDIcon:
                         icon: 'format-quote-open'
                     MDLabel:
-                        text: app.quotes()
+                        text: root.quotes()
                         size_hint_y: None
                         height: self.texture_size[1]
             MDSeparator:
@@ -57,7 +58,8 @@
                 size_hint_y: None
                 height: self.minimum_height
                 MDLabel:
-                    text: 'Quick Access'
+                    text: '[b]Quick Access[/b]'
+                    markup: True
                     font_style: 'H5'
                     size_hint_y: None
                     height: self.texture_size[1]
@@ -72,7 +74,7 @@
                         elevation: 1
                         padding: [10,15,10,15]
                         spacing: "10dp"
-                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                         orientation:'vertical'
                         on_release: app.root.ids.screen_manager.current = 'quick-note-screen'
                         ripple_behavior: True
@@ -92,7 +94,7 @@
                         elevation: 1
                         padding: [10,15,10,15]
                         spacing: "10dp"
-                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                         orientation:'vertical'
                         on_release: app.root.ids.screen_manager.current = 'shorten-url'
                         ripple_behavior: True
@@ -112,7 +114,7 @@
                         elevation: 1
                         padding: [10,15,10,15]
                         spacing: "10dp"
-                        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                        md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                         orientation:'vertical'
                         on_release: app.root.ids.screen_manager.current = 'random-num-screen'
                         ripple_behavior: True
@@ -147,7 +149,7 @@
                 size_hint_x: 1
                 pos_hint: {'center_x':0.5}
                 padding: [10,10,10,10]
-                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 BoxLayout:
                     orientation: 'horizontal'
                     size_hint_y: None
@@ -176,6 +178,10 @@
                         MDList:
                             id: tasks_list
                         Widget:
+            # MDSeparator:
+            #     height: "1dp"
+            #     color: 0,0,0,0.4
+            # Widget:
             
 <ExtrasScreen>:
     name: 'extras'
@@ -201,7 +207,7 @@
                     size_hint_y: None
                     height: "150dp"
                     padding: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     on_press: app.root.ids.screen_manager.current = 'quick-note-screen'
                     ripple_behavior: True
                     ripple_scale: 1.2
@@ -217,7 +223,7 @@
                     size_hint_y: None
                     height: "150dp"
                     padding: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     on_release: app.root.ids.screen_manager.current = 'shorten-url'
                     ripple_behavior: True
                     ripple_scale: 1.2
@@ -233,7 +239,7 @@
                     size_hint_y: None
                     height: "150dp"
                     padding: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     on_release: app.root.ids.screen_manager.current = 'yt-download-screen'
                     ripple_behavior: True
                     ripple_scale: 1.2
@@ -249,7 +255,7 @@
                     size_hint_y: None
                     height: "150dp"
                     padding: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     on_release: app.root.ids.screen_manager.current = 'random-num-screen'
                     ripple_behavior: True
                     ripple_scale: 1.2
@@ -265,7 +271,7 @@
                     size_hint_y: None
                     height: "150dp"
                     padding: "20dp"
-                    md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                    md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                     on_release: app.root.ids.screen_manager.current = 'toss-coin'
                     ripple_behavior: True
                     ripple_scale: 1.2
@@ -292,7 +298,7 @@
             size_hint_y: None
 
             MDCard:
-                md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 orientation: 'vertical'
                 padding: "10dp"
                 radius: [12, 12, 12, 12]
@@ -306,6 +312,56 @@
                     adaptive_height: True
                     spacing: "10dp"
 
+<AccountSettings>:
+    orientation: "vertical"
+    adaptive_height: True
+    padding: "10dp"
+    spacing: "10dp"
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        adaptive_height: True
+        padding: [0,10,0,0]
+        spacing: "10dp"
+        MDBoxLayout:
+            adaptive_height: True
+            orientation:'vertical'
+            BoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                padding: [0,0,0,20]
+                spacing: 10
+                MDLabel:
+                    text: "Username"
+                    halign: "left"
+                    valign: "middle"
+                    size_hint_x: 1
+                    max_lines: 1
+                    shorten: True
+                    shorten_from: 'right'
+                    pos_hint: {"center_y": 0.5}
+                    font_style: 'H6'
+                MDLabel:
+                    text: 'Change your username'
+                    font_style: 'Body2'
+            BoxLayout:
+                orientation: 'vertical'
+                adaptive_height: True
+                MDLabel:
+                    text: "Profile Image"
+                    halign: "left"
+                    valign: "middle"
+                    size_hint_x: 1
+                    max_lines: 1
+                    shorten: True
+                    shorten_from: 'right'
+                    pos_hint: {"center_y": 0.5}
+                    font_style: 'H6'
+                MDLabel:
+                    text: 'Change your profile image.'
+                    font_style: 'Body2'
+
+
 <GeneralSettings>:
     orientation: "vertical"
     adaptive_height: True
@@ -316,9 +372,28 @@
         orientation: "horizontal"
         adaptive_height: True
         padding: [0,10,0,0]
+        # spacing: "10dp"
         MDBoxLayout:
             adaptive_height: True
             orientation:'vertical'
+            # BoxLayout:
+            #     orientation: 'vertical'
+            #     adaptive_height: True
+            #     padding: [0,0,0,20]
+            #     spacing: 10
+            #     MDLabel:
+            #         text: "Calender"
+            #         halign: "left"
+            #         valign: "middle"
+            #         size_hint_x: 1
+            #         max_lines: 1
+            #         shorten: True
+            #         shorten_from: 'right'
+            #         pos_hint: {"center_y": 0.5}
+            #         font_style: 'H6'
+            #     MDLabel:
+            #         text: 'Choose your calender preference'
+            #         font_style: 'Body2'
             BoxLayout:
                 orientation: 'horizontal'
                 adaptive_height: True
@@ -356,7 +431,7 @@
         on_release: root.openRepo()
         padding: [0,15,15,0]
         radius: [12, 12, 12, 12]
-        md_bg_color: '#323031' if app.theme_cls.theme_style=='Dark' else '#CCC1C7'
+        md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
         size_hint_y: None
         height: self.minimum_height
 
@@ -410,6 +485,7 @@
             MDCard:
                 radius: [10]
                 padding: [0,0,5,0]
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 on_release: root.saveContent()
                 ripple_behavior: True
                 MDLabel:
@@ -421,6 +497,7 @@
             MDCard:
                 radius: [10]
                 padding: [0,0,5,0]
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 on_release: root.cleartext()
                 ripple_behavior: True
                 MDLabel:
@@ -432,6 +509,7 @@
             MDCard:
                 radius: [10]
                 padding: [0,0,5,0]
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 on_release: root.copyText()
                 ripple_behavior: True
                 MDLabel:
@@ -448,7 +526,7 @@
             size_hint_x: 1
             multiline: True
             text_color_focus: '#000000'    # When focused (typing)
-            text_color_normal: '#ffffff'    # When not focused
+            text_color_normal: '#000000d0'    # When not focused
             line_color_focus: '#000000'  # Black border when focused
             line_color_normal: '#000000' # Black border when not focused
 
@@ -493,7 +571,7 @@
                 height: dp(150)
                 elevation: 1
                 padding: "15dp"
-                md_bg_color: '#323031'
+                md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
                 MDLabel:
                     text: 'Your Random Number'
                     halign:'center'
@@ -513,7 +591,7 @@
     name: 'shorten-url'
     BoxLayout:
         orientation:'vertical'
-        padding: 20
+        padding: 15
         ColoredTextField:
             id: long_url
             hint_text: 'Enter the url:'
@@ -535,18 +613,26 @@
             size_hint: (1,None)
             height: dp(150)
             elevation:1
-            padding:[15,0,15,0]
+            md_bg_color: '#2A2B2A' if app.theme_cls.theme_style=='Dark' else '#FEEFE5'
+            padding:[15,0,15,10]
             orientation:'vertical'
             MDLabel:
                 text: 'Shortened URL'
                 halign: 'center'
                 font_style: 'H6'
-            MDTextField:
-                id: url_label
-                text: root.short_url
-                readonly: True
-                pos_hint: {'center_x':0.5}
-                size_hint_x: 0.8
+            BoxLayout:
+                orientation: 'horizontal'
+                spacing: 10
+                MDTextField:
+                    id: url_label
+                    text: root.short_url
+                    readonly: True
+                    pos_hint: {'center_x':0.5}
+                    size_hint_x: 0.8
+                MDFloatingActionButton:
+                    icon: 'content-copy'
+                    on_release: root.copyURL()
+                    elevation: 0
             Widget:
                 size_hint: (None,0.1)
         Widget:
@@ -585,7 +671,7 @@
 
 Screen:
     Image:
-        source: "assets/bg.jpg"
+        source: app.bg_image_path
         allow_stretch: True
         keep_ratio: False
         size_hint: 1, 1
@@ -600,7 +686,7 @@ Screen:
 
             canvas.after:
                 Color:
-                    rgba: 1, 1, 1, 0.2  # white with transparency (adjust as needed)
+                    rgba: 1, 1, 1, 0.2  # Seperating line color (white with transparency)
                 Line:
                     width: 1
                     points: self.x, self.y, self.right, self.y  # bottom border
@@ -611,6 +697,23 @@ Screen:
     MDNavigationDrawer:
         id:nav_draw
         width: min(dp(300), root.width * 0.85)
+        
+        canvas.before:
+            Color:
+                rgba: app.colorFromHex('#1B2021') if app.theme_cls.theme_style=='Dark' else app.colorFromHex('#fceef0ff')
+            Rectangle:
+                size: dp(10), self.height
+                pos: self.x, self.y
+
+        canvas.after:
+            Color:
+                rgba: (1, 1, 1, 0.2)  if app.theme_cls.theme_style=='Dark' else (0,0,0,0.2)     # Border color to seperate the navigation drawer and main screen
+            Rectangle:
+                pos: self.right - dp(1), self.y + dp(5)
+                size: dp(1), self.height - dp(15)
+
+        md_bg_color: '#1B2021' if app.theme_cls.theme_style=='Dark' else '#FFEAEE'
+
         ScrollView:
             BoxLayout:
                 orientation:'vertical'
