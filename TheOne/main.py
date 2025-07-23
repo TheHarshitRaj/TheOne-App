@@ -13,6 +13,7 @@ from kivymd.uix.dialog import MDDialog
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDFlatButton
+from kivy.utils import get_color_from_hex
 from kivymd.toast import toast
 from kivymd.uix.snackbar import MDSnackbar
 from kivy.core.clipboard import Clipboard
@@ -21,11 +22,24 @@ from datetime import datetime
 import requests
 import os
 import webbrowser
+import sys
 
 Window.size = (300,500)
 
 class HomeScreen(Screen):
-    pass
+    def quotes(self):
+        response=requests.get('https://zenquotes.io/api/random')
+        if response.status_code == 200:
+            data=response.json()[0]
+            quote = data['q'] + '\n\n- ' + data['a'] + '\n'
+        elif response.status_code == 404:
+            quote = 'Error connecting to the server. Try again later.'
+        elif response.status_code == 429:
+            quote = 'Too many requests. Please try again after a while.' + '\n\n- ' + 'TheOne' + '\n'
+        else:
+            quote = f"Unexpected status code: {response.status_code}. Please try again later."
+
+        return quote
 
 class ProductivityScreen(Screen):
     def get_file_path(self):
@@ -102,6 +116,13 @@ class ExtrasScreen(Screen):
 
 class SettingsScreen(Screen):
     def on_kv_post(self, base_widget):
+        # self.ids.panel_container.add_widget(
+        #     MDExpansionPanel(
+        #         icon="account",
+        #         content=AccountSettings(),
+        #         panel_cls=MDExpansionPanelOneLine(text="Account", font_style='H6')
+        #     )
+        # )
         self.ids.panel_container.add_widget(
             MDExpansionPanel(
                 icon="tools",
@@ -181,7 +202,6 @@ class ShortenUrlScreen(Screen):
     short_url = StringProperty('Your URL appears here...')
 
     def shorten_url(self, long_url):
-
         response = requests.get(
         "https://tinyurl.com/api-create.php",
         params={"url": long_url}
@@ -189,7 +209,21 @@ class ShortenUrlScreen(Screen):
         if response.status_code == 200:
             self.short_url = response.text
         else:
-            self.short_url = f'{response.status_code}: Error shortening the url. Please try again later.'
+            self.short_url = f'{response.status_code}: Error occured.'
+    
+    def copyURL(self):
+        if self.ids.url_label.text == 'Your URL appears here...':
+            dialog=MDDialog(title='Error',
+                                text='Enter an URL to shorten.',
+                                buttons=[
+                                    MDFlatButton(
+                                        text='Close',
+                                        on_release= lambda _: dialog.dismiss()
+                                    )
+                                ])
+            dialog.open()
+        else:
+            Clipboard.copy(self.ids.url_label.text)
 
 class TossCoinScreen(Screen):
     coin=StringProperty('Flip the Coin')
@@ -245,21 +279,18 @@ class TheOne(MDApp):
         self.theme_cls.theme_style='Dark'
         self.theme_cls.primary_palette='DeepPurple'
         self.theme_cls.theme_style_switch_animation=True
-        return Builder.load_file('app.kv')
-    
-    def quotes(self):
-        response=requests.get('https://zenquotes.io/api/random')
-        if response.status_code == 200:
-            data=response.json()[0]
-            quote = data['q'] + '\n\n- ' + data['a'] + '\n'
-        elif response.status_code == 404:
-            quote = 'Error connecting to the server. Try again later.'
-        elif response.status_code == 429:
-            quote = 'Too many requests. Please try again after a while.' + '\n\n- ' + 'TheOne' + '\n'
-        else:
-            quote = f"Unexpected status code: {response.status_code}. Please try again later."
+        def resource_path(relative_path):
+            """ Get absolute path to resource (for dev and PyInstaller) """
+            base_path = getattr(sys, '_MEIPASS', os.path.abspath("."))
+            return os.path.join(base_path, relative_path)
 
-        return quote
+        self.bg_image_path = resource_path("assets/bg.jpg")
+
+        kv_path = resource_path("app.kv")
+        return Builder.load_file(kv_path)
+    
+    def colorFromHex(self, hex_code):
+        return get_color_from_hex(hex_code)
 
 if __name__=='__main__':
     TheOne().run()
