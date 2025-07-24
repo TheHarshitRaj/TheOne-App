@@ -1,6 +1,6 @@
 # 🚀 TheOne
 
-[![Get it on Github](https://raw.githubusercontent.com/SaeedDev94/Xray/refs/heads/master/get-it-on-github.png)](https://github.com/TheHarshitRaj/TheOne-App/releases)
+<a href="https://github.com/anandnet/TheOne-App/releases/latest"><img src ="https://github.com/TheHarshitRaj/TheOne-App/blob/f7131722604704ebdedd2cc1f59dc2fff738915b/getFromGithub.png" width = "250"></a>
 
 ## 📝 What is it?
 
