@@ -1,7 +1,5 @@
 # 🚀 TheOne
 
-<a href="https://github.com/anandnet/TheOne-App/releases/latest"><img src ="https://github.com/TheHarshitRaj/TheOne-App/blob/f7131722604704ebdedd2cc1f59dc2fff738915b/getFromGithub.png" width = "250"></a>
-
 ## 📝 What is it?
 
 A complete productivity app, also armed with all the basic amenities which make people hop onto various sites. Made with Python using the framework Kivy and KivyMD.
@@ -9,6 +7,12 @@ A complete productivity app, also armed with all the basic amenities which make 
 ## 👥 Who is it for?
 
 Everyone needs a productivity and super app for all the small tasks that make them hop onto various websites, just to get it done.
+
+## ⬇️ Download
+
+- Please download the app from the source below.
+
+<a href="https://github.com/anandnet/TheOne-App/releases/latest"><img src ="https://github.com/TheHarshitRaj/TheOne-App/blob/f7131722604704ebdedd2cc1f59dc2fff738915b/getFromGithub.png" width = "250"></a>
 
 ## ✨ Features
 
