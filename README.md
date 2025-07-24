@@ -1,5 +1,7 @@
 # 🚀 TheOne
 
+[![Get it on Github](https://raw.githubusercontent.com/SaeedDev94/Xray/refs/heads/master/get-it-on-github.png)](https://github.com/TheHarshitRaj/TheOne-App/releases)
+
 ## 📝 What is it?
 
 A complete productivity app, also armed with all the basic amenities which make people hop onto various sites. Made with Python using the framework Kivy and KivyMD.
