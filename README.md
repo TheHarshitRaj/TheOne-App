@@ -12,7 +12,7 @@ Everyone needs a productivity and super app for all the small tasks that make th
 
 - Please download the app from the source below.
 
-<a href="https://github.com/anandnet/TheOne-App/releases/latest"><img src ="https://github.com/TheHarshitRaj/TheOne-App/blob/f7131722604704ebdedd2cc1f59dc2fff738915b/getFromGithub.png" width = "250"></a>
+<a href="https://github.com/TheHarshitRaj/TheOne-App/releases/latest"><img src ="https://github.com/TheHarshitRaj/TheOne-App/blob/f7131722604704ebdedd2cc1f59dc2fff738915b/getFromGithub.png" width = "250"></a>
 
 ## ✨ Features
 
