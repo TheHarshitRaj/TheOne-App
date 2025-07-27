@@ -36,7 +36,7 @@ Follow these simple steps to get started:
 git clone https://github.com/TheHarshitRaj/TheOne-App
 
 # Navigate to the project directory
-cd TheOne
+cd TheOne-App
 
 # Install dependencies
 pip install -r requirements.txt
